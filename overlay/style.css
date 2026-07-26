@@ -1,0 +1,169 @@
+body{
+
+    margin:0;
+
+    background:transparent;
+
+    overflow:hidden;
+
+    font-family:Segoe UI;
+
+}
+
+#overlay{
+
+    width:330px;
+
+    padding:20px;
+
+    border-radius:20px;
+
+    background:rgba(20,20,20,.75);
+
+    backdrop-filter:blur(15px);
+
+    color:white;
+
+    box-shadow:0 0 25px rgba(0,0,0,.45);
+
+}
+
+#rank{
+
+    text-align:center;
+
+}
+
+#rank img{
+
+    width:90px;
+
+    height:90px;
+
+}
+
+#rankName{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin-top:10px;
+
+}
+
+#sr{
+
+    font-size:46px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    margin:15px 0;
+
+}
+
+#progress{
+
+    height:14px;
+
+    border-radius:10px;
+
+    background:#333;
+
+    overflow:hidden;
+
+    margin-bottom:20px;
+
+}
+
+#progressFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#2b8fff;
+
+    transition:.4s;
+
+}
+
+.stat{
+
+    font-size:22px;
+
+    margin:10px 0;
+
+}
+
+#srPopup{
+
+    position:absolute;
+
+    top:40px;
+
+    left:360px;
+
+    font-size:48px;
+
+    font-weight:bold;
+
+    opacity:0;
+
+    transform:translateY(30px) scale(.8);
+
+    transition:.5s;
+
+    pointer-events:none;
+
+}
+
+.popupShow{
+
+    opacity:1 !important;
+
+    transform:translateY(0) scale(1);
+
+}
+
+#eventPopup{
+
+    position:absolute;
+
+    top:120px;
+
+    left:360px;
+
+    width:260px;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    background:rgba(30,30,30,.9);
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:white;
+
+    opacity:0;
+
+    transform:scale(.8);
+
+    transition:.35s;
+
+}
+
+.eventShow{
+
+    opacity:1 !important;
+
+    transform:scale(1);
+
+}
