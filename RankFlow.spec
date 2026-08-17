@@ -12,6 +12,7 @@ a = Analysis(
     hiddenimports=[
         "PIL",
         "PIL.Image",
+        "src.ui.v2.header",
     ],
     hookspath=[],
     hooksconfig={},

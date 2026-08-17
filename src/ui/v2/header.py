@@ -3,6 +3,7 @@ import customtkinter as ctk
 from src.theme_v2 import *
 from src.ui.v2.avatar import create_avatar
 from src.ui.v2.icon_button import create_icon_button
+from src.core.version import APP_VERSION
 
 
 HEADER_HEIGHT = 90
@@ -352,7 +353,7 @@ def create_header(parent, logo_image, player_name):
 
     version = ctk.CTkLabel(
         profile,
-        text="Version 1.0.0",
+        text=f"Version {APP_VERSION}",
         font=("Segoe UI", 10),
         text_color=TEXT_SECONDARY,
     )
