@@ -9,7 +9,10 @@ a = Analysis(
         ('data', 'data'),
         ('overlay', 'overlay'),
     ],
-    hiddenimports=[],
+    hiddenimports=[
+        "PIL",
+        "PIL.Image",
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
