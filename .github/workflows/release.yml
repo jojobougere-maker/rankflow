@@ -29,6 +29,32 @@ jobs:
           }
           pip install pyinstaller
 
+      - name: Sync version from tag
+        shell: powershell
+        run: |
+          $version = $env:GITHUB_REF_NAME -replace '^v',''
+
+          $versionFile = "src/core/version.py"
+          $content = Get-Content $versionFile -Raw
+          $content = $content -replace 'APP_VERSION = ".*"', "APP_VERSION = `"$version`""
+          [System.IO.File]::WriteAllText(
+            $versionFile,
+            $content,
+            (New-Object System.Text.UTF8Encoding($false))
+          )
+
+          $issFile = "RankFlow.iss"
+          $content = Get-Content $issFile -Raw
+          $content = $content -replace '#define MyAppVersion ".*"', "#define MyAppVersion `"$version`""
+          $content = $content -replace 'OutputBaseFilename=RankFlow_Setup_v.*', "OutputBaseFilename=RankFlow_Setup_v$version"
+          [System.IO.File]::WriteAllText(
+            $issFile,
+            $content,
+            (New-Object System.Text.UTF8Encoding($false))
+          )
+
+          Write-Host "Building RankFlow version $version"
+
       - name: Build RankFlow
         run: pyinstaller RankFlow.spec --clean
 
