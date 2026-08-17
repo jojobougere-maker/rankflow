@@ -1,5 +1,5 @@
 #define MyAppName "RankFlow"
-#define MyAppVersion "1.0.1"
+#define MyAppVersion "1.0.3"
 #define MyAppPublisher "Josh"
 #define MyAppExeName "RankFlow.exe"
 
@@ -13,7 +13,7 @@ DefaultDirName={localappdata}\Programs\RankFlow
 DefaultGroupName=RankFlow
 
 OutputDir=Output
-OutputBaseFilename=RankFlow_Setup_v1.0.1
+OutputBaseFilename=RankFlow_Setup_v1.0.3
 
 Compression=lzma
 SolidCompression=yes
