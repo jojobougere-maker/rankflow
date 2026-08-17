@@ -11,6 +11,7 @@ from src.theme import (
     FONT_SMALL,
     TEXT,
 )
+from src.utils.resource_path import resource_path
 
 def create_session_card(parent, border, new_session, session):
 
@@ -151,8 +152,8 @@ def create_sr_card(parent, session):
     rank = get_rank(session.current_sr)
 
     rank_image = ctk.CTkImage(
-        light_image=Image.open(rank["image"]),
-        dark_image=Image.open(rank["image"]),
+        light_image=Image.open(resource_path(rank["image"])),
+        dark_image=Image.open(resource_path(rank["image"])),
         size=(90, 90)
     )
 
@@ -293,8 +294,8 @@ def update_sr_rank_icon(rank_icon, current_sr):
     rank = get_rank(current_sr)
 
     rank_image = ctk.CTkImage(
-        light_image=Image.open(rank["image"]),
-        dark_image=Image.open(rank["image"]),
+        light_image=Image.open(resource_path(rank["image"])),
+        dark_image=Image.open(resource_path(rank["image"])),
         size=(90, 90)
     )
 

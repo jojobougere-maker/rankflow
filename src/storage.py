@@ -1,6 +1,5 @@
 import json
 import os
-
 import sys
 
 if getattr(sys, "frozen", False):
@@ -9,6 +8,7 @@ else:
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SAVE_FILE = os.path.join(BASE_DIR, "data", "session.json")
+
 
 def save_session(session):
     os.makedirs(os.path.dirname(SAVE_FILE), exist_ok=True)
@@ -40,10 +40,10 @@ def load_session(session):
     session.losses = data["losses"]
     session.winstreak = data["winstreak"]
 
+
 def save_overlay(session):
     import json
     import os
-
     import sys
 
     if getattr(sys, "frozen", False):
@@ -63,7 +63,7 @@ def save_overlay(session):
         "session_sr": session.session_sr,
         "wins": session.wins,
         "losses": session.losses,
-        "winstreak": session.winstreak
+        "winstreak": session.winstreak,
     }
 
     with open(OVERLAY_FILE, "w") as f:

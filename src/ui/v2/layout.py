@@ -1,154 +1,42 @@
 import customtkinter as ctk
 
+from src.theme_v2 import BACKGROUND, OUTER_MARGIN, PADDING_SECONDARY
+from src.ui.v2.pages.dashboard_page import DashboardPage
+from src.ui.v2.sidebar import create_sidebar
+
 
 def create_layout(app):
+    """Create the stable application shell and its initial DashboardPage."""
+    app.configure(fg_color=BACKGROUND)
 
-    # =========================
-    # Conteneur principal
-    # =========================
+    root = ctk.CTkFrame(app, fg_color=BACKGROUND)
+    root.pack(fill="both", expand=True)
 
-    content = ctk.CTkFrame(
-        app,
-        fg_color="transparent"
-    )
+    header = ctk.CTkFrame(root, fg_color="transparent", height=110)
+    header.pack(fill="x", padx=OUTER_MARGIN, pady=(OUTER_MARGIN, PADDING_SECONDARY))
+    header.pack_propagate(False)
 
-    content.pack(
-        fill="both",
-        expand=True,
-        padx=20,
-        pady=20
-    )
+    body = ctk.CTkFrame(root, fg_color="transparent")
+    body.pack(fill="both", expand=True, padx=OUTER_MARGIN, pady=(0, OUTER_MARGIN))
 
-    # =========================
-    # Ligne du haut
-    # =========================
+    sidebar, sidebar_buttons = create_sidebar(body)
+    sidebar.pack(side="left", fill="y", padx=(0, 4))
+    sidebar.pack_propagate(False)
 
-    top = ctk.CTkFrame(
-        content,
-        fg_color="transparent"
-    )
+    page_container = ctk.CTkFrame(body, fg_color="transparent")
+    page_container.pack(side="left", fill="both", expand=True)
+    page_container.grid_rowconfigure(0, weight=1)
+    page_container.grid_columnconfigure(0, weight=1)
 
-    top.pack(
-        fill="both",
-        expand=True
-    )
-
-    # =========================
-    # Colonne gauche
-    # =========================
-
-    left = ctk.CTkFrame(
-        top,
-        fg_color="transparent",
-        width=420
-    )
-
-    left.pack(
-        side="left",
-        fill="y",
-        padx=(0, 20)
-    )
-
-    left.pack_propagate(False)
-
-    # =========================
-    # Colonne droite
-    # =========================
-
-    right = ctk.CTkFrame(
-        top,
-        fg_color="transparent"
-    )
-
-    right.pack(
-        side="left",
-        fill="both",
-        expand=True
-    )
-
-    # =========================
-    # KPI
-    # =========================
-
-    kpi = ctk.CTkFrame(
-        right,
-        fg_color="transparent",
-        height=170
-    )
-
-    kpi.pack(
-        fill="x"
-    )
-
-    kpi.pack_propagate(False)
-
-    # =========================
-    # Graphique
-    # =========================
-
-    graph = ctk.CTkFrame(
-        right,
-        corner_radius=18
-    )
-
-    graph.pack(
-        fill="both",
-        expand=True,
-        pady=(20, 0)
-    )
-
-    # =========================
-    # Bas
-    # =========================
-
-    bottom = ctk.CTkFrame(
-        content,
-        fg_color="transparent",
-        height=260
-    )
-
-    bottom.pack(
-        fill="both",
-        pady=(20, 0)
-    )
-
-    bottom.pack_propagate(False)
-
-    history = ctk.CTkFrame(
-        bottom
-    )
-
-    history.pack(
-        side="left",
-        fill="both",
-        expand=True,
-        padx=(0, 10)
-    )
-
-    stats = ctk.CTkFrame(
-        bottom
-    )
-
-    stats.pack(
-        side="left",
-        fill="both",
-        expand=True
-    )
+    dashboard_page = DashboardPage(page_container)
+    dashboard_page.grid(row=0, column=0, sticky="nsew")
 
     return {
-
-        "content": content,
-
-        "left": left,
-
-        "right": right,
-
-        "kpi": kpi,
-
-        "graph": graph,
-
-        "history": history,
-
-        "stats": stats,
-
+        "root": root,
+        "header": header,
+        "sidebar": sidebar,
+        "sidebar_buttons": sidebar_buttons,
+        "content": page_container,
+        "dashboard_page": dashboard_page,
+        **dashboard_page.regions,
     }

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environnements
+.venv/
+venv/
+env/
+
+# PyInstaller
+build/
+dist/
+
+# Inno Setup
+Output/
+
+# Logs
+*.log
+
+# Données locales
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# Système
+.DS_Store
+Thumbs.db

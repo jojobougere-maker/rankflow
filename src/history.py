@@ -25,6 +25,7 @@ def save_match(result, sr_change, current_sr):
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, indent=4, ensure_ascii=False)
 
+
 def load_history():
 
     if not os.path.exists(HISTORY_FILE):
@@ -32,6 +33,7 @@ def load_history():
 
     with open(HISTORY_FILE, "r", encoding="utf-8") as f:
         return json.load(f)
+
 
 def clear_history():
 

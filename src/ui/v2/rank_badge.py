@@ -1,0 +1,1 @@
+create_rank_badge(parent, "iridescent")
